@@ -1,0 +1,109 @@
+<!--
+<script>
+var a = 5
+var b = 3
+var z = a / b;
+console.log(z); 
+</script>
+<script>
+var a = 5
+var b = 3
+var z = a == b;
+console.log(z); 
+</script>
+
+<script>
+if(1){
+	console.log("yay!");
+}
+else{
+console.log("not!");
+}
+</script>
+
+<script>
+	var a = 10;
+	while (a > 0){
+		console.log("hello");
+		a = a - 1
+	}
+</script>
+
+<script>
+for(var a = 1; a <= 10; a++){
+	console.log("hello");
+}
+</script>
+
+<script>
+for(var a = 1; a <= 10; a++)
+{
+	if (a % 2 == 0)
+	{
+		console.log("hello");
+	}
+	else 
+	{
+		console.log("not hello");
+	}	
+}
+</script>
+<script>
+	for(a = 1; a <= 10; a++)
+{
+	console.log("hello", a);
+}		
+</script>
+
+<script>
+var r = 1;
+var n = 5;
+for (var a = 1; a < n; a++)
+{
+	r = r * (a + 1);
+}
+console.log(a);
+</script>
+
+<script>
+for (var a = 1; a <= 8; a++)
+	if (a % 2 == 0)
+	{
+	console.log(" # # # #");
+	}
+		else
+		{
+		console.log("# # # #");	
+		}
+</script>
+-->
+<script>
+var n = 20
+var s1 = "#"
+var s2 = " "
+var r1 = ""
+var r2 = ""
+for (a = 1; a <= n; a++)
+{
+	if(a % 2 == 0)
+	{
+		r1 = r1 + s1
+		r2 = r2 + s2
+	}
+	else{
+		r1 = r1 + s2
+		r2 = r2 + s1
+	}
+}	
+for (var a = 1; a <= n; a++)
+{
+	if (a % 2 == 0)
+	{
+		console.log(r1);
+	}
+	else
+	{
+		console.log(r2);	
+	}
+}
+</script>

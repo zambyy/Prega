@@ -1,0 +1,21 @@
+<script>
+var n = 8
+var s1 = "#"
+var s2 = " "
+var r1 = ""
+var r2 = ""
+for (a = 1; a <= n; a++)
+{
+	if(a % 2 == 0)
+	{
+		r1 = r1 + s1
+		r2 = r2 + s2
+	}
+	else{
+		r1 = r1 + s2
+		r2 = r2 + s1
+	}
+}	
+console.log(r1);
+console.log(r2);
+</script>
