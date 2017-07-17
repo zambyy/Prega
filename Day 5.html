@@ -18,7 +18,7 @@ for(i = 1; i <= n; i++)
 <p> Exercitiul Nr. 2</p>
 <script>
 console.log("")
-console.log("Exercitiul Nr. " + 1)
+console.log("Exercitiul Nr. " + 2)
 var n = 10
 for(i = 0; i < n; i++)
 {
@@ -209,15 +209,14 @@ for(var q = 1; q <= n; q++)
 	}
 }
 </script>
--->
 
 <p> Exercitiul Nr. 5</p>
 <script>
 console.log("")
 console.log("Exercitiul Nr. " + 5)
-var x = "DIAGONALA";
-;
-var y = 9;
+var x = "HEY 00-SGDFDFGNDFGDFNDFGNDGFNDFG";
+console.log(x.length);
+var y = x.length;
 var z = " ";
 var r = " ";
 for(var i = 0; i <= y; i++)
@@ -229,5 +228,124 @@ for(var i = 0; i <= y; i++)
 	}
 }
 </script>
+
+<script>
+var s = "DIAGONALA"
+var r = Math.round(3.5)
+console.log(r);
+for (var i = 0; i < s.length; i ++)
+{
+	var z = " "
+	for (var j = 1; j <= i; j ++)
+	{
+		z = z + " "
+	}
+	console.log(z + s[j]);
+
+}
+</script>
+
+<script>
+var f = function(x)
+{
+	console.log("hey");
+	return 2;
+}
+var n = f();
+console.log(n);
+f()
+
+</script>
+
+<script>
+var x = 3
+var f = function(x)
+{
+	return x * x;
+}
+console.log(f(2));
+var n = f(2);
+</script>
+
+
+<script>
+var s = "DIAGONALA"
+var spaces = function(n)
+{
+	var sp = "";
+	for (var j = 1; j <= n; j++)
+	{
+		sp = sp + " ";
+	}
+	return sp;
+}
+for (var i = 0; i < s.length; i ++)
+{
+	console.log(spaces(i)+s[i]);
+}
+</script>
+-->
+
+<p> Exercitiul Nr. 11</p>
+<script>
+console.log("")
+console.log("Exercitiul Nr. " + 11)
+var min_length = function(p)
+{
+	return p.length >= 4
+}
+console.log("Pass Length",min_length("par"));
+
+var is_digit = function(c)
+{
+	var s = "0123456789"
+	for(var i = 0; i < s.length; i++)
+	{
+		if (c == s[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+var has_digits = function(p)
+{
+	for(var i = 0; i <= p.length; i++)
+	{
+		if (is_digit(p[i]))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+console.log("Is Digit",is_digit("a"));
+console.log("Is Digit",is_digit("1"));
+console.log("Has Digit",has_digits("amper1"));
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
