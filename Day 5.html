@@ -284,7 +284,6 @@ for (var i = 0; i < s.length; i ++)
 	console.log(spaces(i)+s[i]);
 }
 </script>
--->
 
 <p> Exercitiul Nr. 11</p>
 <script>
@@ -294,8 +293,9 @@ var min_length = function(p)
 {
 	return p.length >= 4
 }
-console.log("Pass Length",min_length("par"));
+console.log("Pass Length",min_length("pariata"));
 
+//c este caracterul
 var is_digit = function(c)
 {
 	var s = "0123456789"
@@ -308,6 +308,7 @@ var is_digit = function(c)
 	}
 	return false;
 }
+//p este parola
 var has_digits = function(p)
 {
 	for(var i = 0; i <= p.length; i++)
@@ -319,31 +320,236 @@ var has_digits = function(p)
 	}
 	return false;
 }
+
+//c este caracterul
+var is_uppercase = function(c)
+{
+	var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	for(var i = 0; i <= s.length; i++)
+	{
+		if (c == s[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+//p este parola
+var has_uppercase = function(p)
+{
+	for(var i = 0; i <= p.length; i++)
+	{
+		if (is_uppercase(p[i]))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
 console.log("Is Digit",is_digit("a"));
 console.log("Is Digit",is_digit("1"));
 console.log("Has Digit",has_digits("amper1"));
+console.log("Is Uppercase", is_uppercase("A"));
+console.log("Is Uppercase", is_uppercase("a"));
+console.log("Has Uppercase", has_uppercase("aA12"));
+console.log("Has Uppercase", has_uppercase("aa12 dada daA"));
+</script>
 
 
+<p> Exercitiu ajutator</p>
+<script>
+console.log(" ")
+console.log("Exercitu ajutator")
+
+var min_length = function(p)
+{
+	return p.length >= 4
+}
+
+//s este lista de caractere
+var is_something = function(c,s)
+{
+	for(var i = 0; i < s.length; i++)
+	{
+		if (c == s[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+var has_something = function(p,s)
+{
+	for(var i = 0; i < p.length; i++)
+	{
+		if (is_something(p[i],s))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+var has_digits = function(p)
+{
+	return has_something(p, "0123456789")
+}
+
+var has_uppercase = function(p)
+{
+	return has_something(p, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+}
+
+var has_lowercase = function(p)
+{
+	return has_something(p, "abcdefghijklmnopqrstuvwxyz")
+}
+
+var has_symbol = function(p)
+{
+	return has_something(p, "!@#$%^&*()_+=-[]\;'./")
+}
+
+console.log("Has Digits",has_digits("Abc"))
+
+var is_strong = function(p)
+{
+	if(min_length(p))
+	{
+		if(has_digits(p))
+		{
+			if(has_uppercase(p))
+			{
+				if(has_lowercase(p))
+				{
+					if(has_symbol(p))
+					{
+						return true
+					}
+				}
+			}
+		}
+	}
+	return false
+}
+console.log("Is Strong", is_strong("`Abc12$"))
+
+var a = ["","Abcd123","abcO34%","AAAA0123abcdw123131###$$$@!$!$!$!$!@$!!         dawdada", "0ab-"]
+for( var i = 0; i < a.length; i++)
+{
+	console.log(a[i], is_strong(a[i]));
+}
 
 </script>
 
 
 
 
+<script>
+//fibonaci numbers cu for
+var x = 0;
+var y = 1;
+var n = 10;
+var p = 10;
+for(var i = 0; i <= n; i++)
+{
+	var s = x + y;
+	x = y
+	y = s
+	if(s > p)
+	{
+		break;
+	}
+console.log(s);
+}
+
+</script>
+
+<script>
+//fibonaci numbers cu while(while poate repeta la infinit daca e "true")
+var x = 0;
+var y = 1;
+var n = 10;
+
+while(true)
+{	
+	var s = x + y;
+	x = y;
+	y = s;
+	if(s > n)
+		{
+			break;
+		}
+	console.log(s);
+}
+</script>
+
+
+<script>
+//cum sa declari o valoare infinit
+console.log(1/0);
+console.log(-1/0);
+</script>
+
+
+<script>
+//functie recursiva, se apeleaza pe ea insasi si in cazul de mai jos, la infinit
+var f = function();
+{
+	f();
+}
+f();
+</script>
+
+<script>
+//functie recursiva pana la 3
+var f = function(n)
+{
+	if(n < 1)
+	{
+		return;
+	}
+	console.log(n);
+	f(n-1);
+}
+f(3);
+</script>
 
 
 
+<script>
+//fibonaci cu functie recursiva
+var p = 13;
+var f = function(x,y)
+{
+	if(x > p)
+	{
+		return;
+	}
+	console.log(x);
+	f(y,x+y);
+}
+f(0,1);
+</script>
 
+-->
 
-
-
-
-
-
-
-
-
-
+<script>
+var char_position = function(c,s)
+{
+	for(var i = 0; i < s.length; i++)
+	{
+		if (c == s[i])
+		{
+			return i;
+		}
+	}
+}
+console.log(char_position("j","hey joe"));
+console.log(char_position("x","hey joe"));
+</script>
 
 
 

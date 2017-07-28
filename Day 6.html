@@ -1,0 +1,124 @@
+<script>
+//functia cauta un caracter dintr-un string si intoarce pozitia acelui caracter
+var char_position = function(c,s,pos)
+{
+	//parcurgem tot stringul incepand de la pos
+	for(var i = pos; i < s.length; i++)
+	{
+		//verificam daca caracterul se afla la pozitia i din string
+		if (c == s[i])
+		{
+			//intoarcem pozitia caracterului in string
+			return i;
+		}
+	}
+	//nu sa gasit caracterul
+	return false;
+}
+//verifica daca un string se afla la o anumita pozitie intr-un alt string
+var string_match = function(s1,s,pos)
+{
+	//verifica daca exista suficiente caractere in stringul in care cautam(s)
+	if (s.length - pos < s1.length)
+	{
+		//nu sunt suficiente caractere
+		return false;
+	}
+	//parcurgem stringul cautat(s1)
+	for(var i = 0; i < s1.length; i++)
+	{
+		//verificam daca caracterul din stringul cautat(s1) este diferit 
+		// de caracterul din stringul in care cautam(s)
+		if (s1[i]!=s[i+pos])
+		{
+			//caracterele sunt diferite
+			return false;
+		}
+	}
+	//nici un caracter nu sa dovedit a fi diferit
+	return true;
+}
+//cauta un string in alt string si returneaza poztia de unde incepe
+// intoarce false daca stringul nu este gasit. Stringul gol este gasit la pozitia 0
+var string_position = function(s1,s)
+{
+	//verifica daca stringul este gol
+	if(s1 == "")
+	{
+		//Stringul gol se afla la pozitia 0
+		return 0
+	}
+	//pozitia de unde incepem cautarea
+	var start_pos = 0;
+	//cat timp suntem inca in string...
+	while(start_pos < s.length)
+	{
+		//cautam primul caracter din string
+		var pos = char_position(s1[0],s,start_pos);
+		//nu sa gasit primul caracter
+		if(pos == false)
+		{
+			//nu sa gasit stringul
+			return false;
+		}
+		//verificam daca restul stringului se afla acolo unde am gasit primul caracter
+		var match = string_match(s1,s,pos);
+		//daca se potriveste stringul, intoarcem pozitia unde a fost gasita
+		// prima litera
+		if(match)
+		{
+			//intoarcem pozitia unde a fost gasita prima litera
+			return pos;
+		}
+		//daca stringurile nu s-au potrivit, avansam cautarea pe urmatoare pozitie
+		else
+		{
+			//avansam cautarea pe urmatoarea pozitie
+			start_pos = pos + 1;
+		}
+	}
+	//nu a fost gasit stringul si am iesit din string
+	return false;
+}
+//unit testing
+console.log(char_position("j","hey man",0))
+console.log(char_position("j","hey jar joe",0));
+console.log(char_position("","sss",0));
+
+console.log(string_match("joe","hey jar joe",8));
+console.log(string_match("joe","hey jon jhx",4));
+console.log(string_match("joe","hey jo"));
+console.log(string_match("",""));
+
+console.log(string_position("jhx","hey joe jhx"));
+console.log(string_position("joe","hey joe jhx"));
+console.log(string_position("joe","hey jon jhx"));
+console.log(string_position("tom","hey jon jhx"));
+console.log(string_position("","hey jon jhx"));
+console.log(string_position("",""));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
