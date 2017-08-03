@@ -1,0 +1,93 @@
+<canvas id="myCanvas" width = "600" height = "400"><canvas>
+
+<script>
+//{} --> hmap are cheie(key) si valoare(v)
+//[] --> array
+//1.generam literele
+//-generam coloanele
+//-generam o coloana de litere
+//*generam un caracter random
+//2.desenam literele
+//-generam o litera la o anumita coordonata(pozitie pe ecran)
+//-sa desenam o coloana intr-o anumita stare
+//-sa desenam toate coloanele
+//3.animatia
+var screen = [];
+var num_rows = 20;
+var num_columns = 50;
+
+
+var make_column = function()
+{
+	var y = Math.floor(Math.random()*(num_columns - 1));
+	return {"y":y,"chars":[]}
+}
+
+var grow_column = function(column)
+{
+	column.chars.push(random_letter());
+}
+
+var random_letter = function()
+{
+	var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*[]\;',./{}|:<>? "
+	var i = Math.floor(Math.random()*(s.length-1));
+	return s[i];
+}
+
+for(i = 0; i < num_columns; i++)
+{
+	var col = make_column();
+	screen.push(col);
+
+}
+
+var grow_screen = function()
+{
+	for(i = 0; i < num_columns; i++)
+	{
+		var col = screen[i];
+		grow_column(col);
+	}
+}
+
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "10px Monospace";
+
+var draw_char = function(c,x,y)
+{
+	ctx.fillText(c,x * 10,y * 10 + 10);
+}
+
+var draw_column = function(col, x)
+{
+	var chars = col.chars;
+	var y = col.y;
+	for(var i = 0; i < chars.length; i++) {
+		var c = chars[i];
+		draw_char(c, x, y + i);
+	}
+}
+var draw_screen = function()
+{
+	for(var x = 0; x < num_columns; x++)
+	{
+		var col = screen[x];
+		draw_column(col, x);
+	}
+}
+var erease_screen = function()
+{
+	ctx.clearRect(0,0,c.width,c.height);
+}
+var each_second = function()
+{
+	erease_screen();
+	grow_screen();
+	draw_screen();
+}
+setInterval(each_second,100);
+
+</script>
