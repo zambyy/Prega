@@ -1,0 +1,27 @@
+<p> Exercitiul Nr. 3</p>
+<script>
+var s = "Cosmin Apreutesei";
+var s1 = "";
+var is_vowel = function(c)
+{
+	var v = "aeiouAEIOU";
+	for(var i = 0; i < v.length; i++)
+	{
+		if(c == v[i])
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+for(var i = 0; i < s.length; i++)
+{
+	if(is_vowel(s[i]) == false)
+	{
+		s1 = s1 + s[i];
+	}
+}
+console.log(s1);
+
+</script>
