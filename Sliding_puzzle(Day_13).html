@@ -1,0 +1,173 @@
+<canvas id="myCanvas" width = "600" height = "400"><canvas>
+<script>
+/*
+To do list:
+- algoritm pentru evitarea configuratiilor necastigatoare
+- sa ne afiseze ai castigat la finalizarea jocului
+- sa facem miscarea cu animatie
+- sa facem patratelul gol la o pozitie random
+- sa facem un buton cu restart
+- cand dam refresh la pagina sa continuam jocul de unde am ramas
+- tabela de scor cu numarul de mutari efectuate
+- tabela cu cel mai bun scor
+- un buton de unlimited undo
+- sa jucam cu mouse-ul(highlight la piesele ce pot fi mutate)
+- sa centram tabla pe ecran
+- sa generalizam jocul la n x n casute
+- sa folosim o imagine taiata in patratele
+- sa mearga cu orice imagine din instagram
+- sa folosim gradient de culoare
+*/
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.font = "10px Monospace";
+ctx.beginPath();
+ctx.font = "30px Arial";
+
+var create_hat = function() {
+	var hat = [];
+	for(var i = 1; i <= 15; i++)
+	{
+		hat.push(i);
+	}
+	return hat;
+}
+
+var random = function(hat)
+{
+	var a = Math.floor(Math.random()*(hat.length));
+	var b = hat[a];
+	hat.splice(a,1);
+	return b;
+}
+
+var screen;
+var generate_screen = function() {
+	screen = [];
+	var hat = create_hat();
+	for(var j = 1;j <=4; j++)
+	{
+		var line = [];
+		for(var i = 1;i <= 4; i++)
+		{
+			var z = random(hat) || 0;
+			line.push(z);
+		}
+		screen.push(line);
+	}
+}
+
+var redraw_screen = function()
+{
+	//sterg ecranul/canvas
+	ctx.beginPath();
+	ctx.clearRect(0, 0, 600, 400);
+	
+	//desenez ecranul
+	var n = 4;
+	for(var j = 0;j < n;j++)
+	{
+		for(var i = 0; i < n; i++)
+		{
+			var z = screen[j][i];
+			if(z)
+			{
+				ctx.rect(20.5+55*i,20.5+55*j,50,50);
+				var t = (z >= 10 ? 10 : 0);
+				ctx.fillText(z,38-t+55*i,55+55*j);
+				ctx.stroke();
+			}
+		}
+	}
+}
+
+var y = 3;
+var x = 3;
+
+function key_down(e)
+{
+	if(e.key=="ArrowDown")
+	{
+		if(y > 0)
+		{
+			screen[y][x] = screen[y-1][x];
+			screen[y-1][x] = 0;
+			y = y - 1;
+			redraw_screen();
+			console.log(e.key);
+		}
+	}
+	else if(e.key=="ArrowUp")
+	{
+		if(y < 3)
+		{
+			screen[y][x] = screen[y+1][x];
+			screen[y+1][x] = 0;
+			y = y + 1;
+			redraw_screen();
+			console.log(e.key);
+		}
+	}	
+	else if(e.key=="ArrowLeft")
+	{
+		if(x < 3)
+		{
+			screen[y][x] = screen[y][x+1];
+			screen[y][x+1] = 0;
+			x = x + 1;
+			redraw_screen();
+			console.log(e.key);
+		}
+	}	
+	else if(e.key=="ArrowRight")
+	{
+		if(x > 0)
+		{
+			screen[y][x] = screen[y][x-1];
+			screen[y][x-1] = 0;
+			x = x - 1;
+			redraw_screen();
+			console.log(e.key);
+		}	
+	}	
+}
+
+var make_array = function()
+{
+	var arr = [];
+	for(var i = 0; i < 4; i++)
+	{
+		for(var j = 0; j < 4; j++)
+		{
+			if(screen[i][j] != 0)
+			{
+				arr.push(screen[i][j]);
+			}
+		}
+	}
+	return arr;
+}
+
+var inversion_count = function(arr)
+{
+	var count = 0;
+	for(var i = 0; i < arr.length-1; i++)
+	{
+		for(var j = i + 1; j < arr.length; j++)
+		{
+			if(arr[i]>arr[j])
+			{
+				count++;
+			}
+		}
+	}
+	return count;
+
+}
+
+generate_screen();
+inversion_count(make_array());
+redraw_screen();
+addEventListener('keydown', key_down);
+
+</script>
